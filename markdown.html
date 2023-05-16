@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>markdown previewer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+
+
+  <link rel="stylesheet" href="markdown.css" />
+</head>
+
+<body>
+  <div id="container-1">
+    <div id="child-1">
+    <div id="editor"><i class="fab fa-twitter">
+      <strong>Editor</strong></i> 
+      <button id="button-1" class="button">Hide</button>
+      </div>
+      <div id="sizing"><textarea id="markdown-editor" class="form-control">
+#a markdown previewer made with jQuery
+
+----
+##a sub-heading, look how size changes only using(#)
+
+---
+#####this was painful to code but fun, let's follow along, remember that u can modify **only** letters in editor area and see it change directly in previewer page.
+
+
+---
+U can make text look **bold**,
+and even ~~crossed out~~
+
+and even both ~~**bold**~~!
+
+I forgot that U can write in *italic*, and also both ***italic and bold***
+
+we can make lists too:
+
+1. first list
+1. second one
+1. I even **could** mix ~~previous~~ *styles* ***too***
+
+---
+unordered lists too:
+- I don't how space.
+- could change.
+     - the color of list tag.
+     - *sick!!*.
+
+---
+####links could be provided also:
+1. [stackOverflow](https://stackoverflow.com/)
+1. [w3schools](https://www.w3schools.com/default.asp)
+
+---
+`<div class="html">some html goes here</div>` some inline-code between two backticks
+
+---
+#####Can't forget pictures, here's a meme XD (u can modify it by inluding another image link adress )
+![image](meme.jpg)
+
+---
+####fine let's get serious 
+here is the website I used as a base 
+<span>[markdown preview](https://markdown-previewer.freecodecamp.rocks/)<span>
+
+**I even applied some styling beforehead on the span(links) when u hover on it**
+
+----
+*for more projects check this out!*
+<span>[freeCodeCamp](https://www.freecodecamp.org/learn/front-end-development-libraries/#front-end-development-libraries-projects)</span>
+
+![picture](codecamp.png)
+
+
+
+</textarea></div>
+  
+  </div>
+</div>
+<div id="container-2">
+    <div id="child-2">
+    <div id="previewer"><i class="fab fa-twitter">
+      <strong>Previewer</strong></i> 
+      <button id="button-2" class="button">Hide</button>
+      </div>
+      <div id="markdown-previewer" class="form-control"></div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+   $("#button-1").click(function(){
+    $("#markdown-editor").toggle();
+
+   });
+});
+  $(document).ready(function(){
+   $("#button-2").click(function(){
+    $("#markdown-previewer").toggle();
+   }); });
+   //$("#markdown-editor").html("hello!")
+   $(document).ready(function(){
+   //get references to html ids
+   const $editor= $("#markdown-editor");
+   const $previewer= $("#markdown-previewer");
+   //create the converter element
+   const converter=new showdown.Converter({
+        simplifiedAutoLink: true, //automatic links
+        tables: true,
+        strikethrough: true,
+        tasklists: true,
+        ghCodeBlocks: true,
+
+});
+   function updateHtml(){
+    var markDown=$editor.val();
+    var html=converter.makeHtml(markDown);
+
+
+    // Remove wrapping <p> tags from the converted HTML
+    html = html.replace(/^<p>|<\/p>$/g, '');
+    //previewer.innerHTML=html;
+    $previewer.html(html);}
+    
+    //editor.addEventListener("input", updateHtml);
+    $editor.on("input", updateHtml);
+
+    updateHtml();
+    
+});
+   
+
+  
+  
+</script>
+</body>
+</html>

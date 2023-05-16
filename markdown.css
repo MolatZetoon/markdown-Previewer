@@ -1,0 +1,89 @@
+*{
+	font-family: Lucida Console;
+}
+body{
+	background-color: #ff704d;
+}
+
+#child-1{
+	width: 450px;
+	border:1px solid black;
+	margin: 0;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  min-width: 200px;
+  box-shadow: 3px 3px 18px gray;
+
+  
+  
+}
+#child-2{
+	width:800px;
+	border:1px solid black;
+	margin: 0;
+  position: absolute;
+  top: 40%;
+  right: 25%;
+  min-width: 600px;
+  box-shadow: 3px 3px 18px gray;
+}
+#editor{
+	background-color: #ff4d4d;
+	width: 448px;
+	height: 37px;
+	border-bottom:1px solid black;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+
+
+}
+#previewer{
+	background-color: #ff4d4d;
+	border-bottom:1px solid black;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+}
+#markdown-editor{
+  height: 245px;
+  overflow: auto;
+  background-color: #ff9980;
+  /*transition: height 0.3s ease;*/
+  min-height: 200px;
+  resize: none;
+
+  
+
+}
+#markdown-previewer{
+	height: 700px;
+  overflow: auto;
+  background-color: #ff9980;
+  /*transition: height 0.3s ease;*/
+  max-height: 800px;
+  min-height: 200px;
+  resize: none;
+}
+#button-1, #button-2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  height: 36px;
+  color: #ff1a1a;
+  font-size: 14px;
+  border-radius: 3px;
+
+
+}
+span:hover{
+	font-size:18px;
+}
+#button-1:hover, #button-2:hover{
+	color:#b30000;
+	border-radius: 5px;
+}
